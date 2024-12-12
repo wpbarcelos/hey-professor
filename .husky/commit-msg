@@ -1,3 +1,5 @@
+
+sh << EOF
 # Cores
 NC='\033[0m'
 BBlue='\033[1;34m'
@@ -13,9 +15,11 @@ if [ -z "$ISSUE_ID" ]; then
     exit 1
 fi
 
-# # i.g. HEY-1: HEY-1: my feature
-# if [[ $COMMIT_MESSAGE == $ISSUE_ID* ]]; then
-#     exit 0
-# fi
+# i.g. HEY-1: HEY-1: my feature
+if [[ $COMMIT_MESSAGE == $ISSUE_ID* ]]; then
+    exit 0
+fi
 
 echo "$ISSUE_ID: $COMMIT_MESSAGE" >$1
+
+EOF
